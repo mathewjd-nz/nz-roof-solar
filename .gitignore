@@ -1,0 +1,22 @@
+# Local configuration for this site (copy from config.example.toml)
+config.toml
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Generated output (LiDAR crops, JSON results, CSVs)
+out/
+*.npy
+*.log
+*.bak-*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store

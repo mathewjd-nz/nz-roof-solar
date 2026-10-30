@@ -1,0 +1,47 @@
+# nz-roof-solar configuration.
+#
+# Copy this file to config.toml and fill in your site details.
+#     cp config.example.toml config.toml
+#
+# config.toml is git-ignored: it holds your site details, so keep it local.
+# Every value here can also be given on the command line (the flag wins).
+
+# --- site location (required) ---
+address = ""              # street address of the site
+lat = -41.2865           # site latitude in decimal degrees (replace with your site)
+lon = 174.7762           # site longitude in decimal degrees (replace with your site)
+search_radius_m = 150.0   # half-width of the parcel/building search box
+
+# --- regional data services ---
+arcgis_base = "https://mapping.gw.govt.nz/arcgis/rest/services/Region_basemap_P/MapServer"
+linz_wfs_base = "https://data.linz.govt.nz/services;key={key}/wfs"
+linz_building_outlines_layer = "layer-101290"
+
+# --- LiDAR elevation tile ---
+# The URL template must contain a {kind} placeholder (dsm_1m / dem_1m).
+# {kind} is filled in with the product name by roof_planes.py.
+# Replace YOUR_TILE_ID with the regional LiDAR tile your site sits in.
+lidar_tile_url = "https://nz-elevation.s3.ap-southeast-2.amazonaws.com/wellington/wellington-city_2025/{kind}/2193/YOUR_TILE_ID.tiff"
+lidar_tile_id = "YOUR_TILE_ID"
+lidar_half_window_m = 150
+
+# --- yield model ---
+kwp = 6.0                # installed system size in kWp
+string_split = [300.0, 300.0]  # the two string voltages; the panel split is proportional to them
+losses = 0.14            # wiring, soiling, mismatch, inverter (PVWatts default)
+gamma = -0.0037          # power temperature coefficient per degC
+
+# External annual yield reference used to scale the modelled year. Give either
+# the figure directly, or an annual energy figure plus the system size it refers to.
+# Leave both empty to report the unscaled model output.
+# Example value: a typical New Zealand roof produces roughly 1100-1400 kWh per kW per year.
+# reference_kwh_per_kw_year = 1200.0
+# Or give an annual energy figure and the system size it refers to:
+# reference_annual_kwh = 7200.0
+# reference_system_kw = 6.0
+# --- weather archive window ---
+weather_start_date = "2006-01-01"
+weather_end_date = "2025-12-31"
+
+# --- outputs ---
+out_dir = "out"
