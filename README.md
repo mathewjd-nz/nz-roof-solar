@@ -205,7 +205,3 @@ not yours to relicense — it comes from third parties:
   buildings.
 - **No geocoding.** Pass a latitude/longitude; the `address` value is only used as a text token
   when matching council feature attributes.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
